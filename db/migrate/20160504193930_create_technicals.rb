@@ -1,0 +1,11 @@
+class CreateTechnicals < ActiveRecord::Migration
+  def change
+    create_table :technicals do |t|
+      t.integer :passing
+      t.integer :shooting
+      t.references :player, index: true, foreign_key: true
+
+      t.timestamps null: false
+    end
+  end
+end
