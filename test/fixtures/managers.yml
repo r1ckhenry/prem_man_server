@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  club_id: 
+  game_id: 
+  first_name: MyString
+  second_name: MyString
+  date_of_birth: 2016-05-08
+
+two:
+  club_id: 
+  game_id: 
+  first_name: MyString
+  second_name: MyString
+  date_of_birth: 2016-05-08

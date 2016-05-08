@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505205839) do
+ActiveRecord::Schema.define(version: 20160508191232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 20160505205839) do
   add_index "clubs", ["league_id"], name: "index_clubs_on_league_id", using: :btree
   add_index "clubs", ["nation_id"], name: "index_clubs_on_nation_id", using: :btree
 
+  create_table "games", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "leagues", force: :cascade do |t|
     t.integer  "nation_id"
     t.string   "name"
@@ -48,6 +53,19 @@ ActiveRecord::Schema.define(version: 20160505205839) do
   end
 
   add_index "leagues", ["nation_id"], name: "index_leagues_on_nation_id", using: :btree
+
+  create_table "managers", force: :cascade do |t|
+    t.integer  "club_id"
+    t.integer  "game_id"
+    t.string   "first_name"
+    t.string   "second_name"
+    t.date     "date_of_birth"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "managers", ["club_id"], name: "index_managers_on_club_id", using: :btree
+  add_index "managers", ["game_id"], name: "index_managers_on_game_id", using: :btree
 
   create_table "nations", force: :cascade do |t|
     t.string   "name"
@@ -84,6 +102,8 @@ ActiveRecord::Schema.define(version: 20160505205839) do
   add_foreign_key "clubs", "leagues"
   add_foreign_key "clubs", "nations"
   add_foreign_key "leagues", "nations"
+  add_foreign_key "managers", "clubs"
+  add_foreign_key "managers", "games"
   add_foreign_key "players", "nations"
   add_foreign_key "technicals", "players"
 end
