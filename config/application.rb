@@ -25,8 +25,8 @@ module PremierManagerServer
     config.active_record.raise_in_transactional_callbacks = true
 
     config.action_dispatch.default_headers.merge!({
-      'Access-Control-Allow-Origin' => 'http://localhost:3030/',
-      'Access-Control-Request-Method' => 'http://localhost:3030/'
+      'Access-Control-Allow-Origin' => 'http://localhost:3030',
+      'Access-Control-Request-Method' => 'http://localhost:3030'
     })
 
 
